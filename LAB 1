@@ -1,0 +1,382 @@
+Lista 1
+
+1)
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    float jogador1, jogador2, jogador3, premio, totalDaAposta, recebe1, recebe2, recebe3, p1, p2, p3;
+    printf("Informe o valor do premio: ");
+    scanf("%f",&premio);
+    printf("Informe o valor que o jogador 1 apostou: ");
+    scanf("%f",&jogador1);
+    printf("Informe o valor que o jogador 2 apostou: ");
+    scanf("%f",&jogador2);
+    printf("Informe o valor que o jogador 3 apostou: ");
+    scanf("%f",&jogador3);
+    
+    totalDaAposta = jogador1 + jogador2 + jogador3;
+    p1 = jogador1/totalDaAposta;
+    p2 = jogador2/totalDaAposta;
+    p3 = jogador3/totalDaAposta;
+    
+    recebe1 = p1 * premio;
+    recebe2 = p2 * premio;
+    recebe3 = p3 * premio;
+    
+    printf("Jogador 1 recebera: %.2f\n",recebe1);
+    printf("Jogador 1 recebera: %.2f\n",recebe2);
+    printf("Jogador 1 recebera: %.2f\n",recebe3);
+    return 0;
+}
+
+2)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    int x, y;
+    float distancia;
+    printf("Digite a coordenada x: ");
+    scanf("%d", &x);
+    printf("Digite a coordenada y: ");
+    scanf("%d", &y);
+    
+    distancia = sqrt(pow (x - 0, 2) + pow(y - 0, 2));
+    
+    printf("A distancia entre os pontos (%d,%d) e (0,0) eh %2.f",x,y,distancia);
+    
+    return 0;
+}
+
+3)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    int b1, b2, b3, b4, decimal;
+    printf("Digite o 1o. bit: ");
+    scanf("%d", &b1);
+    printf("Digite o 2o. bit: ");
+    scanf("%d", &b2);
+    printf("Digite o 3o. bit: ");
+    scanf("%d", &b3);
+    printf("Digite o 4o. bit: ");
+    scanf("%d", &b4);
+    
+    decimal = pow(2*b1,3) + pow(2*b2,2) + pow(2*b3,1) + pow(2*b4,0);
+    
+    printf("O numero binario %d%d%d%d correspondente ao numero decimal %d",b1,b2,b3,b4,decimal);
+    return 0;
+}
+
+4)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    float massa, altura, imc;
+
+    printf("Digite seu peso (em kg) e sua altura (em metros): ");
+    scanf("%f%f", &massa, &altura);
+
+    imc = massa / (altura * altura);
+
+    if(imc < 18.5)
+        printf("IMC: %f\tAbaixo do peso\n", imc);
+    else if(imc >= 18.5 && imc < 25)
+        printf("IMC: %f\tPeso normal\n", imc);
+    else if(imc >= 25 && imc < 30)
+        printf("IMC: %f\tSobrepeso\n", imc);
+    else if(imc >= 30 && imc < 35)
+        printf("IMC: %f\tObesidade grau 1\n", imc);
+    else if(imc >= 35 && imc < 40)
+        printf("IMC: %f\tObesidade grau 2\n", imc);
+    else
+        printf("IMC: %f\tObesidade grau 3\n", imc);
+
+    return 0;
+}
+
+5)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    int n, i, j, c=0;
+    printf("Digite o numero de linhas: ");
+    scanf("%d",&n);
+    for(i=1;i<=n;i++){
+        for(j=1;j<=i;j++){
+            c++;
+            printf("%d ",c);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+6)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    int fat=1, i;
+    for(i=1;i<=10;i++){
+        fat = fat * i;
+        printf("%d! = %d\n",i, fat);
+    }
+    return 0;
+}
+
+7)
+O erro ocorre por causa do tamanho do int, a solução é usar um tipo de dado com capacidade maior como o double.
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    double fat=1;
+    int i;
+    for(i=1;i<=15;i++){
+        fat = fat * i;
+        printf("%d! = %.1f\n",i, fat);
+    }
+    return 0;
+}
+
+8)#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    float v[5], soma = 0.0, media, desvioPadrao = 0.0, variacoes = 0.0, x;
+    int i,n = 1;
+    for(i=0;i<5;i++){
+    printf("Digite o valor %d: ",n);
+    scanf("%f",&v[i]);
+    n++;
+    soma = soma + v[i];
+    }
+    media = soma/5.0;
+    
+    for(i = 0; i < 5; i++){
+    desvioPadrao = desvioPadrao + pow(v[i] - media, 2);
+  }
+  
+    desvioPadrao = sqrt(desvioPadrao / (5 - 1)); 
+    printf("A media eh %.1f e o desvio-padrao eh %f",media,desvioPadrao);
+    return 0;
+}
+
+9)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    char nome[50];
+    int i;
+    printf("Digite um nome: ");
+    scanf("%s",nome);
+     for(i=0; nome[i] !='\0' ;i++){
+        if(nome[i]>90){
+        nome[i] -= 32;
+        }
+     }
+    
+    printf("Nome digitado eh: %s",nome);
+    
+    return 0;
+}
+
+10)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define L 6
+#define C 6
+int main()
+{
+    int i, j, m[L][C], aSoma=0, bSoma=0, cSoma=0, dSoma=0, eSoma=0, fSoma=0;
+	printf("Preencha os dados da Matriz %dX%d\n", L, C);
+	for(i=0; i < L; i++){
+		for (j=0; j < C; j++){
+			printf("\nDigite os valores para M[%d][%d]\n", i, j);
+			scanf("%d", &m[i][j]);
+		}
+	}
+
+
+	for(i=0; i < L; i++){
+		for (j=0; j < C; j++){
+			if(i==j){
+				aSoma = aSoma + m[i][j];
+			}
+			if (j==C-i-1) {
+				bSoma = bSoma + m[i][j];
+			}
+			if (j>i) {
+				cSoma = cSoma + m[i][j];
+			}
+			if (j<i) {
+				dSoma = dSoma + m[i][j];
+			}
+			if (j<=C-i-2) {
+				eSoma = eSoma + m[i][j];
+			}
+			if (j>=C-i) {
+				fSoma = fSoma + m[i][j];
+			}
+
+		}
+	}
+
+	printf("\n\n  Matriz \n\n");
+	for(i=0; i < L; i++){
+		printf("  %i\t[ ", i);
+		for (j=0; j < C; j++){
+			printf("%i ", m[i][j]);
+		}
+		printf("]\n");
+	}
+	printf("A: %d\n", aSoma);
+	printf("B: %d\n", bSoma);
+	printf("C: %d\n", cSoma);
+	printf("D: %d\n", dSoma);
+	printf("E: %d\n", eSoma);
+	printf("F: %d\n", fSoma);
+    
+    return 0;
+}
+
+11)
+#include <stdio.h>
+#include <string.h>
+
+typedef struct _dados{
+    char nome[50], email[25], rua [25], complemento[25], bairro [25], cidade[25],
+    estado[10], pais[10], observacoes[100];
+    int numero, cep, ddd, numTelefone, dia, mes, ano;
+}dados;
+int main()
+{
+    dados agenda[100];
+    int i, mes, dia, x, y;
+    char nome [50];
+    printf("Escolha uma das opecoes a seguir: \nBuscar por nome 1\nBuscar mes 2\nBuscar por dia e mes 3\nInserir pessoa 4\nRemover pessoa 5\nImprimir nome, telefone e email 6\nImprimir todos os dados 7\nPara sair 8\n");
+    scanf("%d",&x);
+    switch(x){
+    case 1:
+    for(i=0; i<100; i++){
+            if(strcmp(agenda[i].nome, nome) == 0) {
+                printf("Contato localizado %d: \nnome %s\nemail: %s\nrua: %s\nnumero: %d\ncep: %d\ncomplemento: %s\nbairro:%s\ncidade %s\nestado: %s\npais: %s\nobersevacoes: %s\n", i,
+                agenda[i].nome, agenda[i].email, agenda[i].rua, agenda[i].numero, agenda[i].cep, agenda[i].complemento, agenda[i].complemento, agenda[i].bairro, agenda[i].cidade, agenda[i].pais, agenda[i].observacoes);
+                printf("telefone: (%d) %d\ndata de nascimento: %d/%d/%d", agenda[i].ddd, agenda[i].numTelefone, agenda[i].dia, agenda[i].mes, agenda[i].ano);
+        }
+        }break;
+    case 2:
+    for(i=0; i<100; i++){
+        if(mes==agenda[i].mes){
+            printf("Contato localizado %d: \nnome %s\nemail: %s\nrua: %s\nnumero: %d\ncep: %d\ncomplemento: %s\nbairro:%s\ncidade %s\nestado: %s\npais: %s\nobersevacoes: %s\n", i,
+            agenda[i].nome, agenda[i].email, agenda[i].rua, agenda[i].numero, agenda[i].cep, agenda[i].complemento, agenda[i].complemento, agenda[i].bairro, agenda[i].cidade, agenda[i].pais, agenda[i].observacoes);
+            printf("telefone: (%d) %d\ndata de nascimento: %d/%d/%d", agenda[i].ddd, agenda[i].numTelefone, agenda[i].dia, agenda[i].mes, agenda[i].ano);
+        }
+    }break;
+    case 3:
+    for(i=0; i<100; i++){
+        if(dia==agenda[i].dia && mes==agenda[i].mes){
+            printf("Contato localizado %d: \nnome %s\nemail: %s\nrua: %s\nnumero: %d\ncep: %d\ncomplemento: %s\nbairro:%s\ncidade %s\nestado: %s\npais: %s\nobersevacoes: %s\n", i,
+            agenda[i].nome, agenda[i].email, agenda[i].rua, agenda[i].numero, agenda[i].cep, agenda[i].complemento, agenda[i].complemento, agenda[i].bairro, agenda[i].cidade, agenda[i].pais, agenda[i].observacoes);
+            printf("telefone: (%d) %d\ndata de nascimento: %d/%d/%d", agenda[i].ddd, agenda[i].numTelefone, agenda[i].dia, agenda[i].mes, agenda[i].ano);
+        }
+    }break;
+    case 4:
+    for(i=0; i < 100; i++){
+    printf(" Digite os dados a ser inseridos\n ");
+    printf("nome: ");
+    setbuf(stdin, NULL);
+    scanf("%s",agenda[i].nome);
+    printf("email: ");
+    setbuf(stdin, NULL);
+    scanf("%s",agenda[i].email);
+    printf("rua: ");
+    setbuf(stdin, NULL);
+    scanf("%s",agenda[i].rua);
+    printf("complemento: ");
+    setbuf(stdin, NULL);
+    scanf("%s",agenda[i].complemento);
+    printf("numero: ");
+    scanf("%d",&agenda[i].numero);
+    printf("cep: ");
+    scanf("%d",&agenda[i].cep);
+    printf("bairro: ");
+    setbuf(stdin, NULL);
+    scanf("%s",agenda[i].bairro);
+    printf("cidade: ");
+    setbuf(stdin, NULL);
+    scanf("%s",agenda[i].cidade);
+    printf("estado: ");
+    setbuf(stdin, NULL);
+    scanf("%s",agenda[i].estado);
+    printf("pais: ");
+    setbuf(stdin, NULL);
+    scanf("%s",agenda[i].pais);
+    printf("observacoes: ");
+    setbuf(stdin, NULL);
+    scanf("%s",agenda[i].observacoes);
+    printf("telefone: ");
+    scanf("%d %d",&agenda[i].ddd, &agenda[i].numTelefone);
+    printf("data de nascimento: ");
+    scanf("%d%d%d",&agenda[i].dia, &agenda[i].mes, &agenda[i].ano);
+    printf("Deseja continuar inserindo digite 1 para sim e 2 para não: ");
+    scanf("%d",&y);
+    if(y==2){
+        break;
+    }
+    }
+    case 5:
+    printf("Digite o nome a ser removido: ");
+    setbuf(stdin, NULL);
+    scanf("%s",nome);
+    for(i=0; i<100; i++){
+        if(strcmp(agenda[i].nome, nome) == 0){
+            strcpy(agenda[i].nome, agenda[i+1].nome);
+            strcpy(agenda[i].email, agenda[i+1].email);
+            strcpy(agenda[i].rua, agenda[i+1].rua);
+            strcpy(agenda[i].nome, agenda[i+1].nome);
+            strcpy(agenda[i].bairro, agenda[i+1].bairro);
+            strcpy(agenda[i].cidade, agenda[i+1].cidade);
+            strcpy(agenda[i].estado, agenda[i+1].estado);
+            strcpy(agenda[i].pais, agenda[i+1].pais);
+            strcpy(agenda[i].observacoes, agenda[i+1].observacoes);
+            agenda[i].numero = agenda[i+1].numero;
+            agenda[i].cep = agenda[i+1].cep;
+            agenda[i].ddd = agenda[i+1].ddd;
+            agenda[i].dia = agenda[i+1].dia;
+            agenda[i].mes = agenda[i+1].mes;
+            agenda[i].ano = agenda[i+1].ano;
+        }
+    }break;
+    case 6:
+    for(i=0; i<100; i++){
+     printf("nome %s\nemail: %s\nrua: %s\nnumero: %d\ncep: %d\ncomplemento: %s\nbairro:%s\ncidade %s\nestado: %s\npais: %s\nobersevacoes: %s\n",
+            agenda[i].nome, agenda[i].email, agenda[i].rua, agenda[i].numero, agenda[i].cep, agenda[i].complemento, agenda[i].complemento, agenda[i].bairro, agenda[i].cidade, agenda[i].pais, agenda[i].observacoes);
+            printf("telefone: (%d) %d\ndata de nascimento: %d/%d/%d", agenda[i].ddd, agenda[i].numTelefone, agenda[i].dia, agenda[i].mes, agenda[i].ano);
+    }break;
+    case 7:
+    for(i=0; i<100; i++){
+    printf("nome: %s\ntelefone: (%d) %d\nemail: %s\n",agenda[i].nome,agenda[i].ddd,agenda[i].numTelefone,agenda[i].email);
+    }break;
+    case 8: break;
+    default :
+    printf("Opcao invalida");
+    return 0;
+}
+}
