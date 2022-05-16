@@ -1,0 +1,132 @@
+1)
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+int a = 40;
+int *p;
+p = &a;
+printf("Endereco de a: %d\n", &a);
+printf("Endereco de a com ponteiro: %d\n",p);
+scanf("%d",p);
+printf("%d",a);
+return 0;
+}
+
+2)
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+char nome[] = "Jose Augusto";
+int i;
+for(i=0; i <= sizeof(nome); i++){
+    printf("%c",nome[i]);
+}
+return 0;
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+int main(){
+double v[10];
+int i, ind = 0;
+printf("Digite 10 valores do vetor: ");
+for(i=0; i<10; i++){
+    scanf("%lf",v+i);
+}
+for(i=0; i<10; i++){
+    printf("%lf\n",*v+i);
+}
+return 0;
+}
+return 0;
+}
+
+4)
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+int v[10], i;
+printf("Digite 10 valores para o vetor: ");
+for(i=0; i<10; i++){
+    scanf("%d",v+i);
+}
+for(i=9; i>=0; i--){
+    printf("%d\n",*v+i);
+}
+return 0;
+}
+
+5)
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+int *vetor, i;
+vetor = (int *)malloc(5*sizeof(int));
+printf("Digite 5 valores para o vetor: ");
+for(i=0; i<5; i++){
+    scanf("%d",&vetor[i]);
+}
+for(i=0; i<5; i++){
+    printf("%d\n",vetor[i]);
+}
+free(vetor);
+return 0;
+}
+
+6)
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+int *v, n, i, x = 0, y;
+printf("Digite a quantidade de elementos: ");
+scanf("%d",&n);
+v = (int *)malloc(n*sizeof(int));
+printf("Digite os valores: ");
+for(i=0; i<n; i++){
+    scanf("%d",&v[i]);
+}
+for(i=0; i<n; i++){
+    if(v[i]%2==0){
+        x++;
+    }
+}
+printf("Sao pares: %d dos %d inteiros lidos\n",x,n);
+y = n - x;
+printf("Sao pares: %d dos %d inteiros lidos",y,n);
+free(v);
+return 0;
+}
+
+7)
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct xy{
+    int x,y;
+}coordenadas;
+
+int main(){
+    int n, i, x = 1;
+    coordenadas *p;
+    printf("Quantos pontos deseja digitar: ");
+    scanf("%d",&n);
+    p = (coordenadas *)malloc(n*sizeof(coordenadas));
+    for(i=0; i<n; i++){
+        printf("entre com a coordenada x do ponto %d: ",x);
+        scanf("%d",&p[i].x);
+        printf("entre com a coordenada y do ponto %d: ",x);
+        scanf("%d",&p[i].y);
+        x++;
+    }
+    printf("Pontos digitados: ");
+    for(i=0; i<n; i++){
+        printf("(%d,%d);",p[i].x,p[i].y);
+    }
+
+return 0;
+}
