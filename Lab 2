@@ -130,3 +130,30 @@ int main(){
 
 return 0;
 }
+
+8)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+typedef struct xy{
+    int x,y;
+}coordenadas;
+
+int cal_area(int x,int x1,int y,int y1){
+    int a;
+    a = sqrt(pow((x - x1)*(y - y1),2));
+    
+    return a;
+}
+
+int main()
+{
+    coordenadas p, p1;
+    int area;
+    printf("Digite os pontos do retangulo: ");
+    scanf("%d%d%d%d",&p.x,&p.y,&p1.x,&p1.y);
+    area = cal_area(p.x,p.y,p1.x,p1.y);
+    printf("Area: %d",area);
+    return 0;
+}
