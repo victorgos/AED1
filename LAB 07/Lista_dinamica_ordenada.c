@@ -7,7 +7,13 @@ struct no{
 };
 
 Lista cria_lista(){
-    return NULL;
+    Lista cab;
+    cab = (Lista)malloc(sizeof(struct no));
+    if(cab!=NULL){
+        cab->prox = NULL;
+        cab->info = 0;
+    }
+    return cab;
 }
 
 int lista_vazia(Lista lst){
@@ -19,36 +25,27 @@ int lista_vazia(Lista lst){
 }
 
 int insere_ord(Lista *lst, int elem){
-    Lista N = (Lista)malloc(sizeof(struct no));
+    Lista N = (Lista) malloc(sizeof(struct no));
     if(N==NULL){
         return 0;
     }
-    N->info=elem;
-    if(lista_vazia(*lst)||elem <=(*lst)->info){
-        N->prox = *lst;
-        *lst = N;
-        return 1;
-    }
-    Lista aux= *lst;
-    while (aux->prox!=NULL&&aux->prox->info<elem){
+    N->info = elem;
+    Lista aux = *lst;
+    while(aux->prox!=NULL&&aux->prox->info<elem){
         aux = aux->prox;
     }
     N->prox = aux->prox;
     aux->prox = N;
+    (*lst)->info++;
     return 1;
 }
 
 int remove_ord(Lista *lst, int elem){
-    if(lista_vazia(*lst)==1||elem<(*lst)->info){
+    if(lista_vazia(*lst)){
         return 0;
     }
     Lista aux = *lst;
-    if(elem==(*lst)->info){
-        *lst = aux->prox;
-        free(aux);
-        return 1;
-    }
-    while(aux->prox!=NULL&&aux->prox->info<elem){
+    while (aux->prox!=NULL&&aux->prox->info<elem){
         aux = aux->prox;
     }
     if(aux->prox==NULL||aux->prox->info>elem){
@@ -57,17 +54,17 @@ int remove_ord(Lista *lst, int elem){
     Lista aux2 = aux->prox;
     aux->prox = aux2->prox;
     free(aux2);
+    (*lst)->info--;
     return 1;
 }
 
 void imprime_lista(Lista lst){
-	Lista temp;
-	temp = lst;
-	printf("Lista = {");
-	while(temp!=NULL){
-		if(temp->prox!=NULL)printf("%d ",temp->info);
-		else printf("%d",temp->info);
-		temp = temp->prox;
-	}
-	printf("}\n");
+    Lista aux;
+    aux = lst->prox;
+    printf("{ ");
+    while(aux!=NULL){
+        printf("%d ",aux->info);
+        aux = aux->prox;
+    }
+    printf("}\n");
 }
